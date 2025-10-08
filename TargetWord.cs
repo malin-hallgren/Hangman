@@ -8,15 +8,14 @@ namespace Hangman
 {
     internal class TargetWord
     {
-        private List <string> PossibleWords { get; set; }
-        
+        private List <string> PossibleWords { get; set; } = new List<string> { "Desk", "Computer", "Duck", "Keyboard", "Terminal", "Input", "Feedback", "Bottle", "Deadline" };
+
         private string CurrentWord { get; set; }
 
         public char[] MaskedCurrentWord { get; set; }
 
         public TargetWord()
         {
-            PossibleWords = new List<string> { "Desk", "Computer", "Duck", "Keyboard", "Terminal", "Input", "Feedback", "Bottle", "Deadline"};
             var random = new Random ();
             CurrentWord = PossibleWords[random.Next(0, PossibleWords.Count - 1)].ToLower();
             MaskedCurrentWord = MaskWord();

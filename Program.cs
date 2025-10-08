@@ -8,8 +8,9 @@
             var target = new TargetWord();
             var game = new GameLogic(target);
             var hangman = new HangmanArt();
+            var menu = new Menu();
             bool isFreshStart = true;
-            bool gameOngoing = game.StartMenu();
+            bool gameOngoing = menu.StartMenu(target);
 
             while (gameOngoing)
             {
@@ -55,7 +56,7 @@
                 Console.ReadLine();
 
                 isFreshStart = false;
-                gameOngoing = game.StartMenu();
+                gameOngoing = menu.StartMenu(target);
             }
         }
     }
