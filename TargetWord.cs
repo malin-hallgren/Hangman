@@ -21,7 +21,11 @@ namespace Hangman
             MaskedCurrentWord = MaskWord();
         }
 
-        //Resets the inputted object for a game restart
+        /// <summary>
+        /// Resets current TargetWord object to game start state
+        /// </summary>
+        /// <param name="targetWord">Current TargetWord Object</param>
+        /// <returns></returns>
         public TargetWord ResetTargetWord(TargetWord targetWord)
         {
             var random = new Random();
@@ -30,13 +34,20 @@ namespace Hangman
             return targetWord;
         }
 
-        //Masks the current target word to _ by creating a char array the length of the word and filling with _
+        /// <summary>
+        /// Masks the current target word to _
+        /// </summary>
+        /// <returns></returns>
         public char[] MaskWord()
         {
             return new string('_', CurrentWord.Length).ToCharArray();
         }
 
-        //checks guess against current word, and if the guess matches, exchanges the corresponding _ for the guessed letter
+        /// <summary>
+        /// Reveals correct letters 
+        /// </summary>
+        /// <param name="guess">The player's currenttly guessed letter</param>
+        /// <returns></returns>
         public bool RevealLetter(char guess)
         {
             bool isCorrect = false;
@@ -51,7 +62,9 @@ namespace Hangman
             return isCorrect;
         }
 
-        //Prints the masked, or partially masked, word from the array with a slight delay for a dramatic effect
+        /// <summary>
+        /// Prints the masked word in it's current state with correct letters revealed
+        /// </summary>
         public void PrintMaskedWord()
         {
             for(int i = 0; i < MaskedCurrentWord.Length; i++)
@@ -61,7 +74,10 @@ namespace Hangman
             }
         }
 
-        //creates a string from the current masked word and compares against current word
+        /// <summary>
+        /// Checks if the word has been completely guessed
+        /// </summary>
+        /// <returns>Bool denominating whether the word has been guessed</returns>
         public bool WordGuessed()
         {
             string guessedWord = new string(MaskedCurrentWord);
@@ -69,7 +85,9 @@ namespace Hangman
             return guessedWord == CurrentWord;
         }
 
-        //Allows player to input a new word into the pool
+        /// <summary>
+        /// Allows player to type in a new word to be added to the pool of possible words
+        /// </summary>
         public void AddWord()
         {
             Console.WriteLine("Enter a new word:");

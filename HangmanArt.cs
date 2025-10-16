@@ -84,7 +84,9 @@ namespace Hangman
 /         \"
         };
 
-        //method to print current state of the hangman 
+        ///<summary>
+        ///Prints current Hangman to Console
+        ///</summary> 
         public string PrintHangman(int currentStage)
         {
             if(currentStage > 6)

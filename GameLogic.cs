@@ -19,6 +19,12 @@ namespace Hangman
             FaultyGuess = 0;
         }
 
+        /// <summary>
+        /// Resets game properties to restart game
+        /// </summary>
+        /// <param name="targetWord">The word object to use</param>
+        /// <param name="gameLogic">The GameLogic object to use, and return</param>
+        /// <returns>The same GameLogic object as was inputted, but modified</returns>
         public GameLogic ResetGameLogic(TargetWord targetWord, GameLogic gameLogic)
         {
             TargetWord = targetWord;
@@ -28,8 +34,9 @@ namespace Hangman
             return gameLogic;
         }
 
-        //Asks player to input their guess, checks if correct, if not correct itterates the faulty guess
-        //error manages input
+        /// <summary>
+        /// Checks player guess against target word
+        /// </summary>
         public void CheckGuess()
         {
             bool validGuess = false;
@@ -55,7 +62,9 @@ namespace Hangman
             }
         }
 
-        //prints previously guessed letter
+        /// <summary>
+        /// Prints all previously guessed letters to console
+        /// </summary>
         public void PrintPreviousGuesses()
         {
             Console.Write("\nYou have previously guessed: ");

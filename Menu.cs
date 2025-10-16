@@ -10,7 +10,12 @@ namespace Hangman
     {
         private string[] MenuOptions = { "Start Game", "Add Words", "Exit Game" }; //The menu options will neever change at runtime
 
-        //Runs the actual start menu logic
+        /// <summary>
+        /// Runs the start menu, returns true if option to start is selected, fals if option to quit is selected. 
+        /// If option to add a new word to the pool is selected, runs the AddWord() method on the word object passed
+        /// </summary>
+        /// <param name="word">The word object to run AddWord() on in case that option is selected</param>
+        /// <returns></returns>
         public bool StartMenu(TargetWord word)
         {
             while (true)
@@ -31,7 +36,11 @@ namespace Hangman
 
         }
 
-        //Selector for the start menu
+        /// <summary>
+        /// Displays menu and allows user to to navigate options with W/Up arrow and S/Down arrow, pressing enter to select
+        /// </summary>
+        /// <param name="title">The title displayed on top of the menu</param>
+        /// <returns>Integer representing selected menu option</returns>
         public int MakeMenuChoice(string title = "Hangman menu")
         {
             Console.CursorVisible = false;
@@ -42,7 +51,7 @@ namespace Hangman
 
             while (true)
             {
-                var pressedKey = Console.ReadKey(true).Key; //Using true to avoid printing the key to console
+                var pressedKey = Console.ReadKey(true).Key;
 
                 switch (pressedKey)
                 {
@@ -50,14 +59,14 @@ namespace Hangman
                     case ConsoleKey.W:
                         prevSelected = selected;
                         selected = (selected - 1 + MenuOptions.Length) % MenuOptions.Length;
-                        ClearLine(MenuOptions, selected, prevSelected);
+                        ClearLine(selected, prevSelected);
                         DrawMenu(MenuOptions, selected, title);
                         break;
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
                         prevSelected = selected;
                         selected = (selected + 1) % MenuOptions.Length;
-                        ClearLine(MenuOptions, selected, prevSelected);
+                        ClearLine(selected, prevSelected);
                         DrawMenu(MenuOptions, selected, title);
                         break;
                     case ConsoleKey.Enter:
@@ -68,7 +77,12 @@ namespace Hangman
 
         }
 
-        //Highlights for the selected element
+        /// <summary>
+        /// Highlights the option user is currently on, updates when currently selected option is changed
+        /// </summary>
+        /// <param name="options">Array of options on the menu</param>
+        /// <param name="selected">Currently selected option</param>
+        /// <param name="title">Title of the menu to be displayed on top of the menu</param>
         private void DrawMenu(string[] options, int selected, string title)
         {
             Console.Clear();
@@ -101,7 +115,12 @@ namespace Hangman
             }
         }
 
-        private static void ClearLine(string[] options, int selected, int prevSelected)
+        /// <summary>
+        /// Clears lines for the highlight method to work properly
+        /// </summary>
+        /// <param name="selected">Currently selected option</param>
+        /// <param name="prevSelected">Previously selected option</param>
+        private static void ClearLine(int selected, int prevSelected)
         {
             Console.SetCursorPosition(0, selected + 2);
             Console.Write(new string(' ', Console.BufferWidth));
