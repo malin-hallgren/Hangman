@@ -62,6 +62,7 @@ namespace Hangman
             return isCorrect;
         }
 
+        //The AI here suggested to use Task.Delay, I saw no use of this as this program is not ran asynchronously, and therefore I ignored its suggestion
         /// <summary>
         /// Prints the masked word in it's current state with correct letters revealed
         /// </summary>

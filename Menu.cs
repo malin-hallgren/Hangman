@@ -76,7 +76,8 @@ namespace Hangman
             }
 
         }
-
+        //The menu was largely constructed by AI, but the first version it presented used Console.Clear 
+        // which caused flickering. further prompting took place to figure out how to reduce this and the method ClearLine was made
         /// <summary>
         /// Highlights the option user is currently on, updates when currently selected option is changed
         /// </summary>
@@ -115,6 +116,10 @@ namespace Hangman
             }
         }
 
+
+        // AI helped me write this, but completely forgot to reset the cursor, it also did not account for the title 
+        // in determining the position of the lines to clear but rather just tried to clear the lines 
+        // corresponding to selected and prevSelected, which naturally had to be changed
         /// <summary>
         /// Clears lines for the highlight method to work properly
         /// </summary>

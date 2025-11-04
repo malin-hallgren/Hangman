@@ -10,6 +10,7 @@ namespace Hangman
     {
 
         //Ascii art, indentation is weird cause it has to be or else the display in console is weird
+        // I wanted some more fancy solution, just adding to one string, but the one the AI presented was too obscure and thus this solution was used
         private readonly string[] _stages = new string[]
         {
 @"+---+

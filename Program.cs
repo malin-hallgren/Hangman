@@ -41,7 +41,7 @@
                 target.PrintMaskedWord();
                 game.PrintPreviousGuesses();
 
-                //Preints message based on how the player did and sends
+                //Prints message based on how the player did and sends
                 //player back to menu
                 if (game.FaultyGuess >= 6)
                 {
